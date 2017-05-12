@@ -7,7 +7,7 @@ if exists("b:did_ftplugin")
 endif
 
 " if first non-whitespace is '_', check that of and append or update date at the end of the line
-nmap <buffer> tt :s/\(\s*\)_/\1x/e<CR>:s/\s*\[\d\d:\d\d\]\s*$//e<CR>$"=strftime(' [%H:%M]')<CR>p
+nmap <buffer> tt :norm mz<CR>:s/\(\s*\)_/\1x/e<CR>:s/\s*\[\d\d:\d\d\]\s*$//e<CR>$"=strftime(' [%H:%M]')<CR>p<CR>:norm `z<CR>
 " add line below starting with '_ '
 nmap <buffer> to o_ 
 " add line above starting with '_ '
