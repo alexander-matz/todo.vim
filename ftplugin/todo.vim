@@ -6,8 +6,11 @@ if exists("b:did_ftplugin")
   finish
 endif
 
-nmap <buffer> tt ^rx: <Esc>:r! date +" [\%H:\%M]"<Enter>kJA<Esc>$
+" if first non-whitespace is '_', check that of and append or update date at the end of the line
+nmap <buffer> tt :s/\(\s*\)_/\1x/e<CR>:s/\s*\[\d\d:\d\d\]\s*$//e<CR>$"=strftime(' [%H:%M]')<CR>p
+" add line below starting with '_ '
 nmap <buffer> to o_ 
+" add line above starting with '_ '
 nmap <buffer> tO O_ 
 
 " vim: set ts=2 sts=2 sw=2 et ai
